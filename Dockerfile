@@ -1,8 +1,9 @@
 FROM golang:alpine3.17
 WORKDIR /opt/hello-gotuna
-CMD ["go","run","./examples/fullapp/cmd/main.go"]
+CMD ["./main"]
 COPY . .
-EXPOSE 8888
+RUN go build examples/fullapp/cmd/main.go
+
 
 
 
