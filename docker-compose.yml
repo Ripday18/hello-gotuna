@@ -5,6 +5,8 @@ services:
     image: my-appo
     ports:
       - "8888:8888"
-    volume:
-      - ./gotuna:/opt/hello-gotuna
+    volumes:
+      - ./gotuna:/opt/hello-gotuna/hello-gotuna/hello-gotuna
+
+
 
