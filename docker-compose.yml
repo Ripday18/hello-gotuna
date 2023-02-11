@@ -1,12 +1,10 @@
-version: "3"
+version: '3'
 services:
   gotuna:
     build: .
-    image: my-appo
+    image: ghcr.io/qebyn/hello-gotuna/hellogotuna:v1
     ports:
       - "8888:8888"
-    volumes:
-      - ./gotuna:/opt/hello-gotuna/hello-gotuna/hello-gotuna
 
 
 

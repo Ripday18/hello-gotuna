@@ -1,14 +1,12 @@
-FROM golang:1.20.0-alpine3.17 AS builder
-WORKDIR /opt/golang/
+FROM golang:alpine AS build
+WORKDIR /opt/gotuna
 COPY . .
-WORKDIR /opt/golang/examples/fullapp/cmd
-RUN go build
+RUN go build examples/fullapp/cmd/main.go
 
-
-FROM alpine:3.17 AS runtime
-WORKDIR /opt/golang/
-CMD ["./cmd"]
-COPY --from=builder /opt/golang/examples/fullapp/cmd/cmd .
+FROM alpine:3.14
+WORKDIR /opt/gotuna/
+COPY --from=build /opt/gotuna/main .
 EXPOSE 8888
-
+LABEL org.opencontainers.image.source https://github.com/qebyn/hello-gotuna
+CMD ["./main"]
 
